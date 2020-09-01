@@ -14,13 +14,13 @@ keywords = ["differential", "dataflow",  "datalog", "graphql", "query"]
 license = "MIT"
 
 [dependencies]
-timely = { git = "https://github.com/TimelyDataflow/timely-dataflow", features = ["bincode"] }
-differential-dataflow = { git = "https://github.com/TimelyDataflow/differential-dataflow" }
+timely = { git = "https://github.com/TimelyDataflow/timely-dataflow", features = ["bincode"] , rev = "e8f627ecc672680cf20c6b782eda35d5d3f84679" }
+differential-dataflow = { git = "https://github.com/TimelyDataflow/differential-dataflow", rev = "22032200cdef3462c158691068725455be144888" }
 serde = "1"
 serde_derive = "1"
 log = "0.4"
 num-rational = { version = "0.2", features = ["std", "serde"] }
-timely_sort = "0.1.6"
+timely_sort = { path = "../../TimelyDataflow/timely-dataflow/sort/" }
 
 serde_json = { version = "1", optional = true }
 csv = { version = "1", optional = true }
@@ -47,3 +47,9 @@ debug-assertions = false
 rpath = false
 lto = false
 codegen-units = 4
+
+[patch.'https://github.com/TimelyDataflow/timely-dataflow']
+timely = { path = "../../TimelyDataflow/timely-dataflow/timely/" }
+
+[patch.'https://github.com/TimelyDataflow/differential-dataflow']
+differential-dataflow = { path = "../../TimelyDataflow/differential-dataflow/" }
